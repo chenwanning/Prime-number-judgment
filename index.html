@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Prime number judgment</title>
+
+	<script>
+		var checkPrime = function() {
+			alert("開始質數判斷囉!");
+			var number = prompt("請輸入一個「大於1」的數字", "");
+			number = Number(number);
+
+			//n1不是數字、小於1或忘記輸入，進入迴圈，直到輸入正確
+			while (isNaN(number) || number <= 1 || number == "") {
+				number = prompt("不正確的資料，請輸入一個「大於1」的數字", "");
+				number = Number(number);
+			}
+
+			//判斷2是質數
+			if (number == 2) {
+				alert("恭喜!2是質數唷!");
+			}
+
+			//判斷大於2的數，是合數，還是質數
+			var CompositeNumber;
+			for (var i = 2; i < number; i++) {
+
+				//餘數為0,不是質數。
+				if (number % i == 0) {
+					alert("很抱歉，" + number + "不是質數。")
+					CompositeNumber = 'Y'; //是合數
+					break;
+
+					//number測到最後都無法被整除,是質數。
+				} else if (i == number - 1) {
+					alert("恭喜!" + number + "是質數唷!");
+
+				}
+			}
+
+			//如果是合數，找出此數字的因數
+			if (CompositeNumber == 'Y') { //如果是合數才跑這段程式碼
+				var factor = [];
+				for (var i = 2; i < number; i++) {
+					if (number % i == 0) {
+						factor.push(i);
+					}
+				}
+
+				alert("除了1和" + number + "本身外,")
+				alert("它還可以被" + factor + "整除喔!");
+			}
+		}
+		checkPrime();
+
+	</script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
